@@ -12,7 +12,7 @@
 
     <!-- NuGet metadata -->
     <PackageId>APNService</PackageId>
-    <Version>10.0.0</Version>
+    <Version>10.0.1</Version>
     <Authors>Rumen Novachkov</Authors>
     <Description>A lightweight .NET 10 library for sending notifications through Apple Push Notification service (APNs) using token-based (.p8) authentication over HTTP/2.</Description>
     <PackageTags>apns;apple;push;notifications;ios;http2;jwt;p8</PackageTags>
