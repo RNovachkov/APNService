@@ -35,7 +35,7 @@ using APNCore.Models;
 // 1. Create a JWT provider from your .p8 key (reuse this; it caches the signed token).
 using var jwtProvider = ApnJwtProvider.FromP8File(
     teamId: "ABCDE12345",
-    keyId:  "KEY1234567",
+    keyId:  "KEY7654321",
     p8FilePath: "/secure/AuthKey_KEY1234567.p8");
 
 // 2. Configure and create a client (long-lived — create once and reuse).
