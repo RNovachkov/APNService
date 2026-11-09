@@ -1,0 +1,51 @@
+# Build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# CI / pack output
+artifacts/
+*.nupkg
+*.snupkg
+
+# APNs secrets — never commit the signing key
+*.p8
+AuthKey_*.p8
+
+# Test results & coverage
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coverlet.json
+coverage*.json
+coverage*.xml
+coverage*.cobertura.xml
+
+# Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.DotSettings.user
+
+# NuGet
+*.nuget.props
+*.nuget.targets
+.nuget/
+packages/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local environment / secrets
+*.env
+secrets.json
+appsettings.*.local.json

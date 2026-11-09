@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RootNamespace>APNService</RootNamespace>
+    <AssemblyName>APNService</AssemblyName>
+
+    <!-- NuGet metadata -->
+    <PackageId>APNService</PackageId>
+    <Version>10.0.0</Version>
+    <Authors>Rumen Novachkov</Authors>
+    <Description>A lightweight .NET 10 library for sending notifications through Apple Push Notification service (APNs) using token-based (.p8) authentication over HTTP/2.</Description>
+    <PackageTags>apns;apple;push;notifications;ios;http2;jwt;p8</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Copyright>Copyright © $([System.DateTime]::Now.Year)</Copyright>
+    <PackageProjectUrl>https://github.com/RNovachkov/APNService</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/RNovachkov/APNService</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+
+    <!-- Bundle the APNCore assembly (and its XML docs) into this single package. -->
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeReferencedProjectsInPackage</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- The README lives at the repo root (GitHub landing page) and is packed into the package. -->
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- For the optional AddApns() dependency-injection helper. -->
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="APNService.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="tests/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- PrivateAssets="all" stops NuGet from emitting a dependency on a non-existent
+         APNCore package; the assembly is embedded in this package instead (target below). -->
+    <ProjectReference Include="..\APNCore\APNCore.csproj" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Copy the APNCore.dll and APNCore.xml that come from the ProjectReference into lib/<tfm>
+       so the single APNService package is self-contained. -->
+  <Target Name="IncludeReferencedProjectsInPackage" DependsOnTargets="ResolveReferences">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+    </ItemGroup>
+  </Target>
+
+</Project>
