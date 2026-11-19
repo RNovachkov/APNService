@@ -2,7 +2,7 @@
 
 # APNService
 
-A lightweight .NET 10 library for sending notifications through the **Apple Push Notification service (APNs)** using token-based (`.p8`) authentication over HTTP/2.
+A lightweight .NET 11 library for sending notifications through the **Apple Push Notification service (APNs)** using token-based (`.p8`) authentication over HTTP/2.
 
 - **Token-based auth** — signs provider JWTs (ES256) from your `.p8` key and caches them within Apple's refresh window.
 - **Every push type** — alert, background, VoIP, Live Activity, location, complication, File Provider, MDM, and Push to Talk.
