@@ -1,3 +1,5 @@
+![logo](<APNService/Assets/APNService.png>)
+
 # APNService
 
 A lightweight .NET 10 library for sending notifications through the **Apple Push Notification service (APNs)** using token-based (`.p8`) authentication over HTTP/2.

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -12,7 +12,7 @@
 
     <!-- NuGet metadata -->
     <PackageId>APNService</PackageId>
-    <Version>10.0.1</Version>
+    <Version>11.0.0</Version>
     <Authors>Rumen Novachkov</Authors>
     <Description>A lightweight .NET 10 library for sending notifications through Apple Push Notification service (APNs) using token-based (.p8) authentication over HTTP/2.</Description>
     <PackageTags>apns;apple;push;notifications;ios;http2;jwt;p8</PackageTags>
@@ -23,7 +23,7 @@
     <RepositoryUrl>https://github.com/RNovachkov/APNService</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-
+	<PackageIcon>APNService.png</PackageIcon>
     <!-- Bundle the APNCore assembly (and its XML docs) into this single package. -->
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeReferencedProjectsInPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
@@ -35,9 +35,11 @@
 
   <ItemGroup>
     <!-- For the optional AddApns() dependency-injection helper. -->
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="11.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,7 +60,7 @@
        so the single APNService package is self-contained. -->
   <Target Name="IncludeReferencedProjectsInPackage" DependsOnTargets="ResolveReferences">
     <ItemGroup>
-      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
     </ItemGroup>
   </Target>
 
