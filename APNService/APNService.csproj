@@ -14,7 +14,7 @@
     <PackageId>APNService</PackageId>
     <Version>11.0.0</Version>
     <Authors>Rumen Novachkov</Authors>
-    <Description>A lightweight .NET 10 library for sending notifications through Apple Push Notification service (APNs) using token-based (.p8) authentication over HTTP/2.</Description>
+    <Description>A lightweight .NET 11 library for sending notifications through Apple Push Notification service (APNs) using token-based (.p8) authentication over HTTP/2.</Description>
     <PackageTags>apns;apple;push;notifications;ios;http2;jwt;p8</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -29,6 +29,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+	<None Include="Assets/APNService.png" Pack="true" PackagePath="\" />
     <!-- The README lives at the repo root (GitHub landing page) and is packed into the package. -->
     <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
